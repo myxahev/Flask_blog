@@ -1,0 +1,11 @@
+
+
+.idea/.gitignore
+.idea/flask_blog.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+__pycache__/
+static/
+venv/
