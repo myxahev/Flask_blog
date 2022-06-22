@@ -37,7 +37,7 @@
         margin: 5px;
         background-size: 200% 200%;
         background-image: linear-gradient( transparent 50%, rgb(79, 128, 233) 50%);
-        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;      
       }
 
       .navigation-links:hover{
@@ -47,7 +47,7 @@
       }
 
       .navbar{
-        background-color: #c6def1;
+        background-color: #c6def1; 
         box-shadow: 0px 1px 10px black;
       }
 
@@ -56,7 +56,7 @@
       }
     </style>
 
-
+    
   {% block style %} {% endblock style %}
 </head>
 <body>
@@ -72,12 +72,23 @@
           {% endif %}
           <div class="collapse navbar-collapse" id="navbarToggle" style="justify-content: flex-end;">
             <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                {% if current_user.is_authenticated %}
+                    <a class="nav-item nav-link navigation-links" href="{{url_for('users.account') }}"><i class="fa fa-user"></i>Профиль</a>
+                    <a class="nav-item nav-link navigation-links" href="{{ url_for('users.logout') }}"><i class="fa fa-sign-out"></i>Выйти</a>
+
+
+                {% else %}
+                    <a class="nav-link nav-item navigation-links" href="{{url_for('users.login') }}">Войти</a>
+                    <a class="nav-link nav-item navigation-links" href="{{url_for('users.register') }}">Зарегистрироваться</a>
+                {% endif %}
+            </div>
 
           </div>
         </div>
       </nav>
     </header>
-
+    
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-10">
@@ -90,7 +101,7 @@
               {% endfor %}
             {% endif %}
           {% endwith %}
-
+          
           {% block content %}{% endblock %}
         </div>
       </div>
