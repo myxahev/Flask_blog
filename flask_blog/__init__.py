@@ -21,5 +21,7 @@ def create_app():
     app.register_blueprint(main)
     app.register_blueprint(users)
 
-    return app
+    from flask_blog.posts.routes import posts
+    app.register_blueprint(posts)
 
+    return app
